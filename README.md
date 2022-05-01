@@ -43,6 +43,55 @@ We have 5 jupyter notebbok with the code for reproducing some of the results fro
 
 Please cite [[1](#citation)] in your work when using this library in your experiments.
 
+```
+.
+├── diffmask                                                Main directory containing the DiffMask library
+│   │
+│   ├── attributions                                        Directory with re-implementations of other SotA approaches
+│   │   └── ...
+│   │
+│   ├── models
+│   │   ├── distributions.py                                Contains implementations of various subclasses from torch.distributions
+│   │   ├── gates.py                                        nn.Modules that mask a part of the input/hidden states
+│   │   │
+│   │   │                                                   PL Modules that train/evaluate a model on the corresponding datasets
+│   │   ├── question_answering_squad_diffmask.py
+│   │   ├── question_answering_squad.py
+│   │   ├── sentiment_classification_sst_diffmask.py
+│   │   ├── sentiment_classification_sst.py
+│   │   ├── toy_task_diffmask.py
+│   │   └── toy_task.py
+│   │
+│   ├── optim
+│   │   └── lookahead.py                                    An implementation of the "Lookahead" optimizer (https://arxiv.org/abs/1907.08610)
+│   │
+│   └── utils
+│       ├── callbacks.py                                    Callbacks to print loss/acc metrics after each validation step
+│       ├── getter_setter.py                                Methods adding hooks to forward() in order to get/set the hidden states
+│       ├── plot.py                                         Utility methods related to plotting & figures
+│       └── util.py                                         Utility methods for confusion matrix/performance metrics
+│
+│
+│                                                           PL pipleines for training/evaluating a model on the corresponding dataset
+├── run_squad_diffmask.py
+├── run_sst_diffmask.py
+├── run_sst.py
+│
+├── scripts                                                 Shell & python scripts to download/preporcess the datasets (+ models? broken)
+│   ├── download_datasets.sh
+│   ├── download_models.sh
+│   ├── preprocessing.sh
+│   ├── preprocessing_squad.py
+│   └── preprocessing_sst.py
+│
+│                                                           Demonstration notebooks for each experiment (with/without DiffMask, per dataset)
+├── QuestionAnsweringSquadAnalysis.ipynb
+├── QuestionAnsweringSquadDiffMaskAnalysis.ipynb
+├── SentimentClassificationSSTAnalysis.ipynb
+├── SentimentClassificationSSTDiffMaskAnalysis.ipynb
+└── ToyTask.ipynb
+```
+
 ## Feedback
 For questions and comments, feel free to contact [Nicola De Cao](mailto:nicola.decao@gmail.com).
 
@@ -52,7 +101,7 @@ MIT
 ## Citation
 ```
 [1] De Cao, N., Schlichtkrull, M., Aziz, W., Titov, I. (2020).
-How do Decisions Emerge across Layers in Neural Models? 
+How do Decisions Emerge across Layers in Neural Models?
 Interpretation with Differentiable Masking
 In Proceedings of the 2020 Conference on Empirical
 Methods in Natural Language Processing.
